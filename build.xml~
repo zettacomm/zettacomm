@@ -6,7 +6,7 @@
        value of appengine.sdk accordingly.  You may also want to use Ant's
        property file feature, allowing each developer to have their own
        local property file with the path to the SDK from that workspace. -->
-  <property name="appengine.sdk" location="/root/appengine-java-sdk-1.2.6"/>
+  <property name="appengine.sdk" location="/root/appengine-sdk-1.2.6"/>
 
   <!-- Check that the SDK value is set and seems sane, so we can give a nicer
        error if not.  -->
