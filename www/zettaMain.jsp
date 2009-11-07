@@ -20,7 +20,7 @@
 	}
 	
 	%>" height="500" width="510" scrolling="no" frameborder="no"></iframe>
-	<!-- <= request.getPathInfo() %>-->
+	<!-- <%= request.getPathInfo() %>-->
 	<div id="channelSelector">
 <%= makeButton("warden","http://i33.tinypic.com/34zg27l.jpg") %>
 <%= makeButton("extrazz","http://i33.tinypic.com/2pt5pvt.jpg") %>
