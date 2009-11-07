@@ -1,6 +1,8 @@
-<!
-  String makeButton(String channel, String imgURL) {
-	return "<a href=\"javascript: document.getElementById(\'livestreamWidget\').src = \'/stream/" + channel + "\';\"><img width=\"64\" src=\"" + imgURL + \"" alt="" + channel + "\" title=\"" + channel + "\"></img></a>";
+<%!
+  public String makeButton(String channel, String imgURL) {
+	String retval;
+	retval = "<a href=\"javascript:{}\" onclick=\"document.getElementById(\'livestreamWidget\').src = \'/stream/" + channel + "\';\"><img width=\"64\" src=\"" + imgURL + "\" alt=\"" + channel + "\" title=\"" + channel + "\"></img></a>";
+	return retval;
   } 
 
 %>
@@ -9,7 +11,7 @@
 <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /></head>
 <body style="background: #000">
 <div id="videobox" style="float: left; width: 520px; border: 0px">
-<iframe id="livestreamWidget" src="/stream"
+<iframe id="livestreamWidget" src="/stream
 <%	if ((request.getPathInfo() == null ) || (request.getPathInfo().equals("/"))) { //wtf browser, man
 		out.println("/warden");
 		}
@@ -17,13 +19,14 @@
 		out.println(request.getPathInfo()); 
 	}
 	
-	%> " height="500" width="510" scrolling="no" frameborder="no"></iframe>
+	%>" height="500" width="510" scrolling="no" frameborder="no"></iframe>
 	<!-- <= request.getPathInfo() %>-->
 	<div id="channelSelector">
-<= makeButton("warden","http://i33.tinypic.com/34zg27l.jpg") %>
-<= makeButton("cartoonblam","http://i36.tinypic.com/119tct0.jpg") %>
-<= makeButton("booooom","http://i33.tinypic.com/2v7tett.jpg") %>
-<= makeButton("sonikku","http://i34.tinypic.com/1zh1it5.jpg") %>
+<%= makeButton("warden","http://i33.tinypic.com/34zg27l.jpg") %>
+<%= makeButton("extrazz","http://i33.tinypic.com/2pt5pvt.jpg") %>
+<%= makeButton("cartoonblam","http://i36.tinypic.com/119tct0.jpg") %>
+<%= makeButton("booooom","http://i33.tinypic.com/2v7tett.jpg") %>
+<%= makeButton("sonikku","http://i34.tinypic.com/1zh1it5.jpg") %>
 </div>
 </div>
 <div id="chatbox" style="float: left; width: 500px; border: 0px">
