@@ -28,7 +28,7 @@
 
   <servlet>
 	<servlet-name>main</servlet-name>
-	<servlet-class>ZettaMain</servlet-class>
+	<jsp-file>zettaMain.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
