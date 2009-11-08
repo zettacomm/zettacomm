@@ -18,7 +18,7 @@
 
   <servlet>
 	<servlet-name>videoStream</servlet-name>
-	<servlet-class>ZettaStream</servlet-class>
+	<jsp-file>/zettaStream.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
