@@ -54,6 +54,7 @@
 </div>
 <div id="chatbox" style="float: left; width: 480px; border: 0px">
 <iframe width="480" height="500" frameborder="no" src="http://widget.mibbit.com/?settings=1a6ed251be8ef8641a9bcc07054e5851&server=irc.epic-chat.net&channel=<%= java.net.URLEncoder.encode(chat, "UTF-8") %>"></iframe>
+<div style="color: white" >subscribe to our <a href="http://twitter.com/statuses/user_timeline/51882610.rss">rss feed</a></div>
 </div>
 </body>
 </html>
