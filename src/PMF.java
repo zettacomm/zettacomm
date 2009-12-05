@@ -1,3 +1,4 @@
+package zetta;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 

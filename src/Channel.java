@@ -1,3 +1,4 @@
+package zetta;
 import com.google.appengine.api.datastore.Key;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
@@ -24,7 +25,7 @@ public class Channel {
 		this.name = name; this.rank=32767; this.imgURL="";
 	}
 	
-	public Channel(String name; int rank, String imgURL) {
+	public Channel(String name, int rank, String imgURL) {
 		this.name = name; this.rank=rank; this.imgURL=imgURL;
 	}
 	
