@@ -8,11 +8,12 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Channel {
-	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
+//	@PrimaryKey
+//    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+//    private Key key;
 	
-	@Persistent
+//	@Persistent
+	@PrimaryKey
 	private String name;
 	
 	@Persistent
@@ -29,9 +30,9 @@ public class Channel {
 		this.name = name; this.rank=rank; this.imgURL=imgURL;
 	}
 	
-	public Key getKey() {
-		return key;
-	}
+//	public Key getKey() {
+//		return key;
+//	}
 	
 	public String getName() {
 		return this.name;

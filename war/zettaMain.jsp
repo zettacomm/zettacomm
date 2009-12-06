@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="javax.jdo.PersistenceManager" %>
+<%@ page import="zetta.*" %>
 <%!
   public String makeButton(String channel, String imgURL) {
 	String retval;
@@ -45,11 +49,19 @@
 <iframe id="livestreamWidget" src="/stream/<%= video %>" height="500" width="500" scrolling="no" frameborder="no"></iframe>
 	<!-- <%= request.getPathInfo() %>-->
 	<div id="channelSelector">
-<%= makeButton("warden","http://i33.tinypic.com/34zg27l.jpg") %>
-<%= makeButton("extrazz","http://i33.tinypic.com/2pt5pvt.jpg") %>
-<%= makeButton("cartoonblam","http://i36.tinypic.com/119tct0.jpg") %>
-<%= makeButton("booooom","http://i33.tinypic.com/2v7tett.jpg") %>
-<%= makeButton("sonikku","http://i34.tinypic.com/1zh1it5.jpg") %>
+<%
+	PersistenceManager pm = PMF.get().getPersistenceManager();
+	String query = "select from " + Channel.class.getName() + " order by rank asc";
+    List<Channel> channels = (List<Channel>) pm.newQuery(query).execute();
+    if (channels.isEmpty()) {
+		out.println("No channels Found!");
+    } 
+	else {
+		for (Channel c : channels) {	
+			out.println(makeButton(c.getName(),c.getImgURL()));
+		}
+	}
+%>
 </div>
 </div>
 <div id="chatbox" style="float: left; width: 480px; border: 0px">
