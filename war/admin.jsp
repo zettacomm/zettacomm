@@ -39,32 +39,51 @@
 <%
     } 
 	else {
+%>
+			<table padding=0 ><tr><td>Name</td><td>Rank</td><td>Image Url</td><td></td><td></td></tr>
+<%
 		for (Channel c : channels) {
 %>
+
+			<tr>
+	 		<td valign="top">
 			<form method="POST" action="/admin">
 				<input type="hidden" name="action" value="post">
 				<input type="hidden" name="name" value="<%= c.getName() %>">
-				Name:<%= c.getName() %>
-				Rank:<input type="text" name="rank" value="<%= c.getRank() %>">
-				Image URL:<input type="text" name="imgURL" value="<%= c.getImgURL() %>">
+				<%= c.getName() %>
+			</td>
+			<td valign="top">
+				<input type="text" name="rank" value="<%= c.getRank() %>">
+			</td>
+			<td valign="top">
+				<input type="text" name="imgURL" value="<%= c.getImgURL() %>">
+			</td>
+			<td valign="top">
 				<input type="submit" name="update" value="update">
 			</form>
+			</td>
+			<td valign="top">
 			<form method="POST" action="/admin">
 				<input type="hidden" name="action" value="delete">
 				<input type="hidden" name="name" value="<%= c.getName() %>">
 				<input type="submit" name="delete" value="delete">
 			</form>
+			</td>
+			</tr>
 <%
 		}
+%>
+		</table>
+<%
 	}
 	pm.close(); // commit to db and no more reads.
 %>
-
+	<hr>
 	<form method="POST" action="/admin">
 	<input type="hidden" name="action" value="put">
-	Name:<input type="text" name="name" value="livestreamChannelName"><br />
-	Rank:<input type="text" name="rank" value="32767"><br />
-	image Url:<input type="text" name="imgURL" value="http://"><br />
+	Name: <input type="text" name="name" value="ChannelName"><br />
+	Rank (1-32767): <input type="text" name="rank" value="32767"><br />
+	Image Url: <input type="text" name="imgURL" value="http://"><br />
 	<input type="submit" name="add" value="add">
 	</form>
 	<!-- <%= request.getMethod() %> -->
