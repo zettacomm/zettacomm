@@ -6,34 +6,6 @@
    version="2.5"> 
   <display-name>New Project Template</display-name>
   
-  <servlet>
-	<servlet-name>admin</servlet-name>
-	<jsp-file>/admin.jsp</jsp-file>
-  </servlet>
-   <servlet-mapping>
-    <servlet-name>admin</servlet-name>
-    <url-pattern>/admin/*</url-pattern>
-  </servlet-mapping>
-
- <servlet>
-    <servlet-name>test</servlet-name>
-    <servlet-class>Test</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/test/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-	<servlet-name>videoStream</servlet-name>
-	<jsp-file>/zettaStream.jsp</jsp-file>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>videoStream</servlet-name>
-    <url-pattern>/stream/*</url-pattern>
-  </servlet-mapping>
 
   <servlet>
 	<servlet-name>main</servlet-name>
@@ -45,7 +17,34 @@
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+	<servlet-name>admin</servlet-name>
+	<jsp-file>/admin.jsp</jsp-file>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+	<servlet-name>videoStream</servlet-name>
+	<jsp-file>/zettaStream.jsp</jsp-file>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>videoStream</servlet-name>
+    <url-pattern>/stream/*</url-pattern>
+  </servlet-mapping>
+
+ <servlet>
+	<servlet-name>testjsp</servlet-name>
+	<jsp-file>/test.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>testjsp</servlet-name>
+    <url-pattern>/test/*</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>
