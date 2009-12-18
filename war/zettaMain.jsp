@@ -91,6 +91,10 @@ function getMaxLivestreamWidgetSize() {
 	var view = getViewableSize(), retval=new Array;
 	retval['height']=view['height']-100; //leave plenty of room
 	retval['width']=Math.floor(retval['height']*(1200/980))+25;
+	if ((view['width']-retval['width'])<480) { //make chatbox atleast 480 across
+		retval['width'] = view['width'] - 500;
+		retval['height'] = Math.floor(retval['width']*(980/1200));
+	}
 	return retval;
 }
 
