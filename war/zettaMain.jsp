@@ -3,18 +3,38 @@
 <%@ page import="javax.jdo.PersistenceManager" %>
 <%@ page import="zetta.*" %>
 <%!
-  public String makeButton(String channel, String imgURL) {
+	
+public String makeButton(String channel, String imgURL) {
 	String retval;
 	retval = "<a href=\"javascript:{}\" onclick=\"changeChannel('"+channel+"');\"><img width=\"48\" src=\"" + imgURL + "\" alt=\"" + channel + "\" title=\"" + channel + "\"></img></a>";
 	return retval;
-  } 
+}
+
+public String getDefaultChannelName() {	//return channel of lowest rank
+	String retval;
+	Channel myChannel;
+	PersistenceManager pm = PMF.get().getPersistenceManager();
+	String query = "select from " + Channel.class.getName() + " order by rank asc";
+    List<Channel> channels = (List<Channel>) pm.newQuery(query).execute();
+    if (channels.isEmpty()) {
+		retval= "" ;
+    } 
+	else {
+		myChannel = channels.get(0);
+		retval = myChannel.getName();
+	}
+	pm.close();
+	return retval;
+}
+	 
 
 %>
 <%
 	String video, chat;
 	String[] path = request.getPathInfo().split("/");
 	out.println("<!-- "+path.length+" "+request.getPathInfo()+" -->");
-	video = "warden"; chat = "#zetta";		//defaults (TODO: add default stuff here
+	video = getDefaultChannelName(); 
+	chat = "#zetta";		//defaults (TODO: add default stuff here
 	if (path.length >= 2) { //we have options and or commands, path[0] is null because of split
 		int myIndex;
 		for (myIndex = 1; myIndex < path.length; myIndex++) { //parse path. commands: -option, -option/value, channelname
@@ -160,6 +180,7 @@ function resizeVideobox() {	//also resize livestreamWidget iframe
 			out.println(makeButton(c.getName(),c.getImgURL()));
 		}
 	}
+	pm.close();
 %>
 	</div>
 </div>
