@@ -16,7 +16,7 @@
 			chan.setRank(Integer.parseInt(request.getParameter("rank")));
 			chan.setImgURL(request.getParameter("imgURL"));
 //			pm.makePersistent(chan);
-			out.println("UPDATE "+chan.getName()+chan.getImgURL());
+			out.println("UPDATE: "+chan.getName()+", "+chan.getRank()+", "+chan.getImgURL());
 		}
 		else if (action.equals("put")) {                    //add
 			out.println("ADD");
