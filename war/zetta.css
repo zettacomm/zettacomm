@@ -1,0 +1,8 @@
+body { background-color: black;}
+iframe { margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; width: 100%; height: 100%; overflow-y: hidden; overflow-x: hidden; border: 0px}
+#videoBox {float: left; width: 500px;}
+#chatBox {float: left; width: 480px;}
+a:link {color:#000}      /* unvisited link */
+a:visited {color:#000}  /* visited link */
+a:hover {color:#888}  /* mouse over link */
+a:active {color:#ccc}  /* selected link */
