@@ -92,10 +92,10 @@ public String getDefaultChannelName() {	//return channel of lowest rank
 <div id="chatBox">
 <iframe id="mibbitWidget" src="http://widget.mibbit.com/?settings=1a6ed251be8ef8641a9bcc07054e5851&server=irc.epic-chat.net&channel=<%= java.net.URLEncoder.encode(chat, "UTF-8") %>"></iframe>
 <div>
-<a href="http://twitter.com/zettacomm"><img src="/images/twitter_32.png"></img></a>
-<a href="http://twitter.com/statuses/user_timeline/51882610.rss"><img src="/images/feed_32.png"></img></a>
-<a href="http://zettacomm.blogspot.com/"><img src="/images/blogger_32.png"></img></a>
-<a href="http://zettacomm.wikidot.com/"><img src="/images/wiki_32.png"></img></a>
+<a target="_blank" href="http://twitter.com/zettacomm"><img src="/images/twitter_32.png"></img></a>
+<a target="_blank" href="http://twitter.com/statuses/user_timeline/51882610.rss"><img src="/images/feed_32.png"></img></a>
+<a target="_blank" href="http://zettacomm.blogspot.com/"><img src="/images/blogger_32.png"></img></a>
+<a target="_blank" href="http://zettacomm.wikidot.com/"><img src="/images/wiki_32.png"></img></a>
 </div>
 </div>
 <script type="text/javascript"></script>
