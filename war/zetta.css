@@ -1,5 +1,6 @@
 body { background-color: black;}
-iframe { margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; width: 100%; height: 100%; overflow-y: hidden; overflow-x: hidden; border: 0px}
+iframe { width: 100%; height: 100%; overflow-y: hidden; overflow-x: hidden; overflow: hidden; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;  border: 0px}
+div {overflow-x: hidden; overflow-y: hidden;}
 #videoBox {float: left; width: 500px;}
 #chatBox {float: left; width: 480px;}
 a:link {color:#100}      /* unvisited link */
@@ -7,3 +8,4 @@ a:visited {color:#100}  /* visited link */
 a:hover {color:#888}  /* mouse over link */
 a:active {color:#ccc}  /* selected link */
 #channelSelector {text-align: center;}
+::-webkit-scrollbar {width: 13px; height: 13px;}
