@@ -2,6 +2,6 @@
   <!-- Replace this with your application id from http://appengine.google.com -->
   <application>zettacomm</application>
 
-  <version>0-0-3g</version>
+  <version>1-0-0a</version>
 
 </appengine-web-app>
