@@ -1,0 +1,12 @@
+.gitignore			Tells git to ignore war directory after compilation
+build-linux.xml			ant build file for compilation on linux
+build-windows.xml		ant build file for compilation on windows
+html/				all things to be copied to war as-is 
+html/*.(jsp,html,js,css,ico)	web files
+html/images/			images
+html/WEB-INF/			appengine configuration files
+html/WEB-INF/appengine-web.xml	appengine config file (app version number and app name)
+html/WEB-INF/web.xml		appserver config file (url mappings to jsp's or classes)
+html/WEB-INF/classes		holds META-INF/jdoconfig.xml database config file. do not touch
+src/				java classes source files
+$BRANCH_VERSION$		empty file with current git branch as the name (manually keep up to date)
