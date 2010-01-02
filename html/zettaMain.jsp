@@ -4,7 +4,7 @@
 <%@ page import="zetta.*" %>
 <%!
 	
-public String makeButton(String channel, String imgURL) {
+public String makeButton(String channel, String imgURL) {	//returns string with html for channel buttons
 	String retval;
 	retval = "<a href=\"javascript:{}\" onclick=\"zetta.changeChannel('"+channel+"');\"><img width=\"48\" src=\"" + imgURL + "\" alt=\"" + channel + "\" title=\"" + channel + "\"></img></a>";
 	return retval;
@@ -20,7 +20,7 @@ public String getDefaultChannelName() {	//return channel of lowest rank
 		retval= "" ;
     } 
 	else {
-		myChannel = channels.get(0);
+		myChannel = channels.get(0);	//get first channel from list
 		retval = myChannel.getName();
 	}
 	pm.close();
@@ -32,27 +32,36 @@ public String getDefaultChannelName() {	//return channel of lowest rank
 <%
 	String video, chat;
 	String[] path = request.getPathInfo().split("/");
-	out.println("<!-- "+path.length+" "+request.getPathInfo()+" -->");
-	video = getDefaultChannelName(); 
-	chat = "#zetta";		//defaults (TODO: add default stuff here
+	video = getDefaultChannelName();	//defaults
+	chat = "#zetta";
+	//following code block processes url of the forms:
+	// 	/
+	//	/streamname
+	//	/-channel/channelname
+	//	/streamname/-chat/chatname
+	//	/-channel/channelname/-chat/chatname
+	// in order to set vars video and chat based on url
+	// not the cleanest way to do it and prolly needs error handling but it works for now.
+	// -option/value can be thought of as option=value
+	
 	if (path.length >= 2) { //we have options and or commands, path[0] is null because of split
 		int myIndex;
-		for (myIndex = 1; myIndex < path.length; myIndex++) { //parse path. commands: -option, -option/value, channelname
-			if (path[myIndex].substring(0,1).equals("-")) { //command
-				if(path[myIndex].equals("-channel")) { // -channel/channelname
+		for (myIndex = 1; myIndex < path.length; myIndex++) { 	//parse path. commands: -option, -option/value, channelname
+			if (path[myIndex].substring(0,1).equals("-")) { 	//options start with '-'
+				if(path[myIndex].equals("-channel")) { 			// -channel/channelname
 					if(myIndex < (path.length - 1)) {
-						myIndex++; //advance to option
-						video = path[myIndex];
+						myIndex++; //advance to option value
+						video = path[myIndex];	//consume value
 					}
 				}
-				if(path[myIndex].equals("-chat")) { // -chat/chatroomname
+				if(path[myIndex].equals("-chat")) { 			// -chat/chatroomname
 					if(myIndex < (path.length - 1)) {
 						myIndex++; //advance to option
 						chat = "#" + path[myIndex];
 					}
 				}
 			}
-			else { //is channel name
+			else {	//is just a channel name
 				video = path[myIndex];
 			}
 			
@@ -73,7 +82,7 @@ public String getDefaultChannelName() {	//return channel of lowest rank
 	<!-- <%= request.getPathInfo() %>-->
 	<div id="channelSelector">
 <%
-	PersistenceManager pm = PMF.get().getPersistenceManager();
+	PersistenceManager pm = PMF.get().getPersistenceManager();	//let's make some buttons!
 	String query = "select from " + Channel.class.getName() + " order by rank asc";
     List<Channel> channels = (List<Channel>) pm.newQuery(query).execute();
     if (channels.isEmpty()) {

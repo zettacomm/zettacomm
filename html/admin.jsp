@@ -7,9 +7,10 @@
 	<head><title>Zetta Admin Panel</title></head>
 	<body>
 <%
-    Channel chan;
+    Channel chan; 	//chan is created by and kept track of by persistence manager. we can do gets and sets on it and then when we pm.close()
+					//changes to the object are automatically saved to database.
 	PersistenceManager pm = PMF.get().getPersistenceManager();
-	if (request.getMethod().equals("POST")) {
+	if (request.getMethod().equals("POST")) {	// handle form input here
 		String action = request.getParameter("action");
 		if ( action.equals("post")) {                       //update
 			chan = pm.getObjectById(Channel.class, request.getParameter("name"));
@@ -30,7 +31,7 @@
 		}
 	}
 	pm.close(); //won't commit without it. i know. dumb!
-	pm = PMF.get().getPersistenceManager();
+	pm = PMF.get().getPersistenceManager();	//form output starts here
 	String query = "select from " + Channel.class.getName() + " order by rank asc";
     List<Channel> channels = (List<Channel>) pm.newQuery(query).execute();
     if (channels.isEmpty()) {
@@ -42,7 +43,7 @@
 %>
 			<table padding=0 ><tr><td>Name</td><td>Rank</td><td>Image Url</td><td></td><td></td></tr>
 <%
-		for (Channel c : channels) {
+		for (Channel c : channels) {	//print update/delete row for each channel
 %>
 
 			<tr>
@@ -77,7 +78,8 @@
 <%
 	}
 	pm.close(); // commit to db and no more reads.
-%>
+// rest of file is to add new channel form
+	%>
 	<hr>
 	<form method="POST" action="/admin">
 	<input type="hidden" name="action" value="put">
@@ -86,7 +88,6 @@
 	Image Url: <input type="text" name="imgURL" value="http://"><br />
 	<input type="submit" name="add" value="add">
 	</form>
-	<!-- <%= request.getMethod() %> -->
 	<body>
 	
 </html>
