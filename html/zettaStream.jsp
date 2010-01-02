@@ -1,6 +1,5 @@
-<!-- will be the new stream handler -->
 <%! 
-public static int countOccurrences(String haystack, char needle) {
+public static int countOccurrences(String haystack, char needle) { //count # of a specific character in a string
     int count = 0;
     for (int i=0; i < haystack.length(); i++)
     {
@@ -13,16 +12,16 @@ public static int countOccurrences(String haystack, char needle) {
 }
 %>
 <%! 
-public String[] pathToArray(String path) {				//break  path in the form of /streamname/sizeX/sizeY down into array	
+public String[] pathToArray(String path) {				//break path in the form of /streamname/sizeX/sizeY or /streamname down into array	
 	String myPath = path;
 	String[] retval = new String[0];
-	if (myPath != null && myPath.length() > 1) { //jetty passes null instead of "" grrrrrrrr
+	if (myPath != null && myPath.length() > 1) {	//jetty passes null instead of "" grrrrrrrr
 		if (myPath.charAt(0) == '/') { myPath = myPath.substring(1); } //del leading /'s
 		if (myPath.length() > 0 && myPath.charAt(myPath.length() - 1) == '/') {myPath = myPath.substring(0, myPath.length() - 1);} //del trailing /'s
-		if (countOccurrences(myPath,'/') > 0) {
-			retval = myPath.split("/");
+		if (countOccurrences(myPath,'/') > 0) { 
+			retval = myPath.split("/");				//break string into array
 		}
-		else {
+		else {										//only have streamname then
 			retval = new String[1];
 			retval[0] = myPath;
 		}
@@ -34,8 +33,8 @@ public String[] pathToArray(String path) {				//break  path in the form of /stre
 <%
 	String[] mystr;
 	String path = request.getPathInfo();
-	mystr=pathToArray(path);
-	String playerWidth="480";	//sane defaults
+	mystr = pathToArray(path);
+	String playerWidth="480";	//sane defaults to pass in url
 	String playerHeight="500";
 	String channelName=""; // 	//don't be too clever with defaults. that's handled in zettaMain
 	if (mystr.length >= 1) { channelName = mystr[0]; }
