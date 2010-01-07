@@ -99,7 +99,7 @@ public String getDefaultChannelName() {	//return channel of lowest rank
 </div>
 
 <div id="chatBox">
-<iframe id="mibbitWidget" scrolling="no" src="http://widget.mibbit.com/?settings=1a6ed251be8ef8641a9bcc07054e5851&server=irc.epic-chat.net&channel=<%= java.net.URLEncoder.encode(chat, "UTF-8") %>"></iframe>
+<iframe id="mibbitWidget" scrolling="no" src="http://widget.mibbit.com/?settings=1a6ed251be8ef8641a9bcc07054e5851&server=irc.anonnet.org&channel=<%= java.net.URLEncoder.encode(chat, "UTF-8") %>"></iframe>
 <div>
 <a target="_blank" href="http://twitter.com/zettacomm"><img src="/images/twitter_32.png"></img></a>
 <a target="_blank" href="http://twitter.com/statuses/user_timeline/51882610.rss"><img src="/images/feed_32.png"></img></a>
